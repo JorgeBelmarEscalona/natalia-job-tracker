@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Seguimiento de Postulaciones — Control de Gestión / Finanzas</title>
+<meta name="description" content="Tablero para registrar ofertas laborales y el estado de cada postulación." />
+<style>
+  :root {
+    --purple: #3B2C8C;
+    --purple-dark: #2C2068;
+    --teal: #2AA9A6;
+    --teal-dark: #1E8A87;
+    --bg: #F7F7FB;
+    --card: #FFFFFF;
+    --border: #E3E2EE;
+    --text: #262433;
+    --text-muted: #6B6880;
+    --danger: #D64545;
+    --amber: #C98A1F;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17151F;
+      --card: #211F2C;
+      --border: #34313F;
+      --text: #EDECF5;
+      --text-muted: #A6A3B5;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  header.top {
+    background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+    color: #fff;
+    padding: 28px 20px 34px;
+  }
+  header.top .wrap { max-width: 1100px; margin: 0 auto; }
+  header.top h1 { margin: 0 0 6px; font-size: 22px; }
+  header.top p { margin: 0; opacity: .88; font-size: 14px; max-width: 720px; line-height: 1.5; }
+  .container { max-width: 1100px; margin: -20px auto 60px; padding: 0 16px; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  }
+  .stat .n { font-size: 22px; font-weight: 700; color: var(--purple); }
+  .stat .l { font-size: 12px; color: var(--text-muted); }
+  @media (prefers-color-scheme: dark) { .stat .n { color: #B9A9FF; } }
+
+  .panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  }
+
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .filters { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-muted);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    cursor: pointer;
+  }
+  .chip.active { background: var(--purple); color: #fff; border-color: var(--purple); }
+
+  button.primary {
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button.primary:hover { background: var(--teal-dark); }
+  button.ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  button.icon-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: var(--text-muted);
+    padding: 4px 6px;
+  }
+  button.icon-btn:hover { color: var(--danger); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  thead th {
+    text-align: left;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--text-muted);
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:hover { background: rgba(42,169,166,0.06); }
+  td input[type=text], td input[type=date], td textarea, td select {
+    width: 100%;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text);
+    font-size: 13.5px;
+    font-family: inherit;
+    padding: 4px 6px;
+    border-radius: 6px;
+  }
+  td input:focus, td textarea:focus, td select:focus {
+    outline: none;
+    border-color: var(--teal);
+    background: rgba(42,169,166,0.06);
+  }
+  td textarea { resize: vertical; min-height: 34px; }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+  .badge.alta { background: #E7F6F5; color: var(--teal-dark); }
+  .badge.media { background: #FDF2DC; color: var(--amber); }
+  @media (prefers-color-scheme: dark) {
+    .badge.alta { background: rgba(42,169,166,.18); }
+    .badge.media { background: rgba(201,138,31,.18); }
+  }
+
+  select.estado { font-weight: 600; }
+  a.link-btn {
+    display: inline-block;
+    font-size: 12.5px;
+    color: var(--teal-dark);
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  a.link-btn:hover { text-decoration: underline; }
+
+  .empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .footer-note {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .footer-note a { color: var(--teal-dark); }
+
+  dialog#formDialog {
+    border: none;
+    border-radius: 14px;
+    padding: 0;
+    max-width: 440px;
+    width: 92vw;
+    color: var(--text);
+    background: var(--card);
+  }
+  dialog#formDialog::backdrop { background: rgba(20,18,30,.5); }
+  .form-body { padding: 20px; }
+  .form-body h3 { margin: 0 0 14px; font-size: 16px; }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 12.5px; color: var(--text-muted); margin-bottom: 4px; }
+  .field input, .field select {
+    width: 100%;
+    padding: 9px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13.5px;
+    font-family: inherit;
+  }
+  .form-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--purple-dark);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+    z-index: 50;
+  }
+  .toast.show { opacity: 1; }
+
+  input[type=file] { display: none; }
+
+  @media (max-width: 720px) {
+    table, thead, tbody, tr, td { display: block; width: 100%; }
+    thead { display: none; }
+    tbody tr {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      padding: 6px 4px;
+    }
+    tbody td {
+      border-bottom: none;
+      padding: 6px 10px;
+      display: flex;
+      flex-direction: column;
+    }
+    tbody td::before {
+      content: attr(data-label);
+      font-size: 10.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>Seguimiento de Postulaciones</h1>
+    <p>Analista de Control de Gestión / Finanzas · Santiago (prioridad La Reina y comunas cercanas). Registra aquí cada oferta que encuentres y su estado, para no perder el hilo de tus postulaciones.</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="stats" id="stats"></div>
+
+  <div class="panel">
+    <div class="toolbar">
+      <div class="filters" id="filters"></div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="ghost" id="btnExport">Exportar</button>
+        <button class="ghost" id="btnImport">Importar</button>
+        <input type="file" id="fileImport" accept="application/json" />
+        <button class="primary" id="btnAdd">+ Agregar oferta</button>
+      </div>
+    </div>
+
+    <div style="overflow-x:auto;">
+      <table id="table">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Cargo</th>
+            <th>Empresa</th>
+            <th>Comuna / Modalidad</th>
+            <th>Prioridad</th>
+            <th>Estado</th>
+            <th>Notas</th>
+            <th>Link</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="empty" id="emptyState" style="display:none;">
+      Aún no hay ofertas registradas. Usa “+ Agregar oferta” para sumar la primera.
+    </div>
+  </div>
+
+  <div class="panel footer-note">
+    Este tablero guarda los datos <strong>en el navegador de este dispositivo</strong> (no hay servidor detrás).
+    Usa “Exportar” de vez en cuando para respaldar tu información o pasarla a otro computador, e “Importar”
+    para cargarla de nuevo. Las comunas de prioridad alta son: La Reina, Ñuñoa, Las Condes, Peñalolén, Macul,
+    Providencia y Vitacura.
+  </div>
+
+</div>
+
+<dialog id="formDialog">
+  <form class="form-body" id="jobForm">
+    <h3 id="formTitle">Agregar oferta</h3>
+    <div class="field">
+      <label>Cargo</label>
+      <input type="text" id="f_cargo" required placeholder="Ej: Analista de Control de Gestión" />
+    </div>
+    <div class="field">
+      <label>Empresa</label>
+      <input type="text" id="f_empresa" placeholder="Ej: Falabella" />
+    </div>
+    <div class="field">
+      <label>Comuna / Modalidad</label>
+      <input type="text" id="f_comuna" placeholder="Ej: La Reina, Presencial" />
+    </div>
+    <div class="field">
+      <label>Fecha detectada</label>
+      <input type="date" id="f_fecha" />
+    </div>
+    <div class="field">
+      <label>Estado</label>
+      <select id="f_estado">
+        <option>Nueva</option>
+        <option>Postulada</option>
+        <option>En proceso / Entrevista</option>
+        <option>Rechazada</option>
+        <option>Oferta recibida</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Link de la oferta</label>
+      <input type="text" id="f_link" placeholder="https://www.linkedin.com/jobs/view/..." />
+    </div>
+    <div class="field">
+      <label>Notas</label>
+      <input type="text" id="f_notas" placeholder="Opcional" />
+    </div>
+    <div class="form-actions">
+      <button type="button" class="ghost" id="btnCancel">Cancelar</button>
+      <button type="submit" class="primary">Guardar</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "job_tracker_v1";
+  var PRIORITY_COMUNAS = ["la reina", "ñuñoa", "nunoa", "las condes", "peñalolén", "penalolen", "macul", "providencia", "vitacura"];
+  var ESTADOS = ["Todas", "Nueva", "Postulada", "En proceso / Entrevista", "Rechazada", "Oferta recibida"];
+
+  var activeFilter = "Todas";
+  var editingId = null;
+
+  function loadJobs() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      console.warn("No se pudo leer localStorage", e);
+      return [];
+    }
+  }
+
+  function saveJobs(jobs) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(jobs));
+    } catch (e) {
+      showToast("No se pudo guardar (almacenamiento del navegador no disponible).");
+    }
+  }
+
+  function uid() {
+    return "j_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
+  }
+
+  function isPriority(comuna) {
+    if (!comuna) return false;
+    var c = comuna.toLowerCase();
+    return PRIORITY_COMUNAS.some(function (p) { return c.indexOf(p) !== -1; });
+  }
+
+  function escapeHtml(str) {
+    var div = document.createElement("div");
+    div.textContent = str == null ? "" : str;
+    return div.innerHTML;
+  }
+
+  function showToast(msg) {
+    var t = document.getElementById("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(showToast._h);
+    showToast._h = setTimeout(function () { t.classList.remove("show"); }, 2200);
+  }
+
+  var jobs = loadJobs();
+
+  function renderStats() {
+    var el = document.getElementById("stats");
+    var total = jobs.length;
+    var counts = {};
+    ESTADOS.slice(1).forEach(function (e) { counts[e] = 0; });
+    jobs.forEach(function (j) { counts[j.estado] = (counts[j.estado] || 0) + 1; });
+    var items = [
+      { n: total, l: "Total registradas" },
+      { n: counts["Nueva"] || 0, l: "Nuevas" },
+      { n: counts["Postulada"] || 0, l: "Postuladas" },
+      { n: counts["En proceso / Entrevista"] || 0, l: "En proceso" },
+      { n: counts["Oferta recibida"] || 0, l: "Ofertas recibidas" }
+    ];
+    el.innerHTML = items.map(function (it) {
+      return '<div class="stat"><div class="n">' + it.n + '</div><div class="l">' + it.l + '</div></div>';
+    }).join("");
+  }
+
+  function renderFilters() {
+    var el = document.getElementById("filters");
+    el.innerHTML = ESTADOS.map(function (e) {
+      var cls = "chip" + (e === activeFilter ? " active" : "");
+      return '<button class="' + cls + '" data-filter="' + escapeHtml(e) + '">' + escapeHtml(e) + '</button>';
+    }).join("");
+    Array.prototype.forEach.call(el.querySelectorAll(".chip"), function (btn) {
+      btn.addEventListener("click", function () {
+        activeFilter = btn.getAttribute("data-filter");
+        renderAll();
+      });
+    });
+  }
+
+  function fieldChanged(id, key, value) {
+    var job = jobs.find(function (j) { return j.id === id; });
+    if (!job) return;
+    job[key] = value;
+    saveJobs(jobs);
+    if (key === "comuna" || key === "estado") renderAll();
+  }
+
+  function removeJob(id) {
+    if (!confirm("¿Eliminar esta oferta del tablero?")) return;
+    jobs = jobs.filter(function (j) { return j.id !== id; });
+    saveJobs(jobs);
+    renderAll();
+    showToast("Oferta eliminada.");
+  }
+
+  function renderTable() {
+    var tbody = document.getElementById("tbody");
+    var visible = jobs.filter(function (j) {
+      return activeFilter === "Todas" || j.estado === activeFilter;
+    }).slice().sort(function (a, b) {
+      return (b.fecha || "").localeCompare(a.fecha || "");
+    });
+
+    document.getElementById("emptyState").style.display = jobs.length === 0 ? "block" : "none";
+    document.getElementById("table").style.display = jobs.length === 0 ? "none" : "table";
+
+    tbody.innerHTML = visible.map(function (j) {
+      var pr = isPriority(j.comuna);
+      var estadoOptions = ESTADOS.slice(1).map(function (e) {
+        return '<option value="' + escapeHtml(e) + '"' + (j.estado === e ? " selected" : "") + '>' + escapeHtml(e) + '</option>';
+      }).join("");
+      var linkCell = j.link
+        ? '<a class="link-btn" href="' + escapeHtml(j.link) + '" target="_blank" rel="noopener">Ver oferta ↗</a>'
+        : '<span style="color:var(--text-muted); font-size:12.5px;">—</span>';
+
+      return (
+        '<tr>' +
+        '<td data-label="Fecha"><input type="date" value="' + escapeHtml(j.fecha || "") + '" onchange="window.__jt.change(\'' + j.id + '\',\'fecha\',this.value)" /></td>' +
+        '<td data-label="Cargo"><input type="text" value="' + escapeHtml(j.cargo || "") + '" onchange="window.__jt.change(\'' + j.id + '\',\'cargo\',this.value)" /></td>' +
+        '<td data-label="Empresa"><input type="text" value="' + escapeHtml(j.empresa || "") + '" onchange="window.__jt.change(\'' + j.id + '\',\'empresa\',this.value)" /></td>' +
+        '<td data-label="Comuna / Modalidad"><input type="text" value="' + escapeHtml(j.comuna || "") + '" onchange="window.__jt.change(\'' + j.id + '\',\'comuna\',this.value)" /></td>' +
+        '<td data-label="Prioridad">' + (pr ? '<span class="badge alta">Alta</span>' : '<span class="badge media">Media</span>') + '</td>' +
+        '<td data-label="Estado"><select class="estado" onchange="window.__jt.change(\'' + j.id + '\',\'estado\',this.value)">' + estadoOptions + '</select></td>' +
+        '<td data-label="Notas"><input type="text" value="' + escapeHtml(j.notas || "") + '" onchange="window.__jt.change(\'' + j.id + '\',\'notas\',this.value)" /></td>' +
+        '<td data-label="Link">' + linkCell + '</td>' +
+        '<td><button class="icon-btn" title="Eliminar" onclick="window.__jt.remove(\'' + j.id + '\')">✕</button></td>' +
+        '</tr>'
+      );
+    }).join("");
+  }
+
+  function renderAll() {
+    renderStats();
+    renderFilters();
+    renderTable();
+  }
+
+  window.__jt = { change: fieldChanged, remove: removeJob };
+
+  // Add / edit dialog
+  var dialog = document.getElementById("formDialog");
+  document.getElementById("btnAdd").addEventListener("click", function () {
+    editingId = null;
+    document.getElementById("formTitle").textContent = "Agregar oferta";
+    document.getElementById("jobForm").reset();
+    document.getElementById("f_fecha").value = new Date().toISOString().slice(0, 10);
+    dialog.showModal();
+  });
+  document.getElementById("btnCancel").addEventListener("click", function () {
+    dialog.close();
+  });
+  document.getElementById("jobForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var job = {
+      id: editingId || uid(),
+      cargo: document.getElementById("f_cargo").value.trim(),
+      empresa: document.getElementById("f_empresa").value.trim(),
+      comuna: document.getElementById("f_comuna").value.trim(),
+      fecha: document.getElementById("f_fecha").value,
+      estado: document.getElementById("f_estado").value,
+      link: document.getElementById("f_link").value.trim(),
+      notas: document.getElementById("f_notas").value.trim()
+    };
+    jobs.push(job);
+    saveJobs(jobs);
+    dialog.close();
+    renderAll();
+    showToast("Oferta agregada.");
+  });
+
+  // Export / Import
+  document.getElementById("btnExport").addEventListener("click", function () {
+    var blob = new Blob([JSON.stringify(jobs, null, 2)], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "postulaciones-" + new Date().toISOString().slice(0, 10) + ".json";
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+  document.getElementById("btnImport").addEventListener("click", function () {
+    document.getElementById("fileImport").click();
+  });
+  document.getElementById("fileImport").addEventListener("change", function (e) {
+    var file = e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      try {
+        var incoming = JSON.parse(reader.result);
+        if (!Array.isArray(incoming)) throw new Error("Formato inválido");
+        var existingIds = new Set(jobs.map(function (j) { return j.id; }));
+        var added = 0;
+        incoming.forEach(function (j) {
+          if (j && j.id && !existingIds.has(j.id)) {
+            jobs.push(j);
+            added++;
+          }
+        });
+        saveJobs(jobs);
+        renderAll();
+        showToast(added + " ofertas importadas.");
+      } catch (err) {
+        showToast("No se pudo leer el archivo importado.");
+      }
+      e.target.value = "";
+    };
+    reader.readAsText(file);
+  });
+
+  renderAll();
+})();
+</script>
+</body>
+</html>
