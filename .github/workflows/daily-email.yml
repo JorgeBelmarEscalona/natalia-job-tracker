@@ -1,0 +1,43 @@
+name: Resumen diario por correo
+
+on:
+  schedule:
+    # 12:00 UTC ~ 08:00-09:00 hora de Santiago (ajustar si hace falta)
+    - cron: "0 12 * * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - "data/ofertas.json"
+
+permissions:
+  contents: write
+
+jobs:
+  send-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Enviar resumen
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          NATALIA_EMAIL: ${{ secrets.NATALIA_EMAIL }}
+        run: python3 scripts/send_digest.py
+
+      - name: Guardar registro de ofertas notificadas
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- data/.notified.json; then
+            git add data/.notified.json
+            git commit -m "chore: actualizar registro de notificaciones"
+            git push
+          fi

@@ -7,26 +7,40 @@
 <meta name="description" content="Tablero para registrar ofertas laborales y el estado de cada postulación." />
 <style>
   :root {
-    --purple: #3B2C8C;
-    --purple-dark: #2C2068;
-    --teal: #2AA9A6;
-    --teal-dark: #1E8A87;
-    --bg: #F7F7FB;
+    --purple: #4B2E9E;
+    --purple-dark: #2B1B63;
+    --accent: #8B6FF0;
+    --accent-dark: #6B4CE0;
+    --accent-soft: #EFEBFF;
+    --bg: #F8F7FC;
     --card: #FFFFFF;
-    --border: #E3E2EE;
+    --border: #E4E1F3;
     --text: #262433;
     --text-muted: #6B6880;
     --danger: #D64545;
     --amber: #C98A1F;
+    --success: #2F9E68;
+    color-scheme: light;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #17151F;
-      --card: #211F2C;
-      --border: #34313F;
+    :root:not([data-theme="light"]) {
+      --bg: #15121F;
+      --card: #201C30;
+      --border: #362F4A;
       --text: #EDECF5;
       --text-muted: #A6A3B5;
+      --accent-soft: rgba(139,111,240,.16);
+      color-scheme: dark;
     }
+  }
+  :root[data-theme="dark"] {
+    --bg: #15121F;
+    --card: #201C30;
+    --border: #362F4A;
+    --text: #EDECF5;
+    --text-muted: #A6A3B5;
+    --accent-soft: rgba(139,111,240,.16);
+    color-scheme: dark;
   }
   * { box-sizing: border-box; }
   body {
@@ -60,7 +74,8 @@
   }
   .stat .n { font-size: 22px; font-weight: 700; color: var(--purple); }
   .stat .l { font-size: 12px; color: var(--text-muted); }
-  @media (prefers-color-scheme: dark) { .stat .n { color: #B9A9FF; } }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .stat .n { color: #C9BBFF; } }
+  :root[data-theme="dark"] .stat .n { color: #C9BBFF; }
 
   .panel {
     background: var(--card);
@@ -92,7 +107,7 @@
   .chip.active { background: var(--purple); color: #fff; border-color: var(--purple); }
 
   button.primary {
-    background: var(--teal);
+    background: var(--accent-dark);
     color: #fff;
     border: none;
     padding: 9px 16px;
@@ -101,7 +116,7 @@
     font-weight: 600;
     cursor: pointer;
   }
-  button.primary:hover { background: var(--teal-dark); }
+  button.primary:hover { background: var(--purple); }
   button.ghost {
     background: transparent;
     border: 1px solid var(--border);
@@ -137,7 +152,7 @@
     border-bottom: 1px solid var(--border);
     vertical-align: top;
   }
-  tbody tr:hover { background: rgba(42,169,166,0.06); }
+  tbody tr:hover { background: var(--accent-soft); }
   td input[type=text], td input[type=date], td textarea, td select {
     width: 100%;
     border: 1px solid transparent;
@@ -150,8 +165,8 @@
   }
   td input:focus, td textarea:focus, td select:focus {
     outline: none;
-    border-color: var(--teal);
-    background: rgba(42,169,166,0.06);
+    border-color: var(--accent);
+    background: var(--accent-soft);
   }
   td textarea { resize: vertical; min-height: 34px; }
 
@@ -162,18 +177,20 @@
     font-size: 11.5px;
     font-weight: 600;
   }
-  .badge.alta { background: #E7F6F5; color: var(--teal-dark); }
+  .badge.alta { background: var(--accent-soft); color: var(--accent-dark); }
   .badge.media { background: #FDF2DC; color: var(--amber); }
   @media (prefers-color-scheme: dark) {
-    .badge.alta { background: rgba(42,169,166,.18); }
-    .badge.media { background: rgba(201,138,31,.18); }
+    :root:not([data-theme="light"]) .badge.alta { color: #C9BBFF; }
+    :root:not([data-theme="light"]) .badge.media { background: rgba(201,138,31,.18); }
   }
+  :root[data-theme="dark"] .badge.alta { color: #C9BBFF; }
+  :root[data-theme="dark"] .badge.media { background: rgba(201,138,31,.18); }
 
   select.estado { font-weight: 600; }
   a.link-btn {
     display: inline-block;
     font-size: 12.5px;
-    color: var(--teal-dark);
+    color: var(--accent-dark);
     text-decoration: none;
     font-weight: 600;
     white-space: nowrap;
@@ -192,7 +209,7 @@
     color: var(--text-muted);
     line-height: 1.6;
   }
-  .footer-note a { color: var(--teal-dark); }
+  .footer-note a { color: var(--accent-dark); }
 
   dialog#formDialog {
     border: none;
@@ -268,7 +285,7 @@
 
 <header class="top">
   <div class="wrap">
-    <h1>Seguimiento de Postulaciones</h1>
+    <h1>Postulaciones de Natalia <span aria-hidden="true">&#x1F49C;</span></h1>
     <p>Analista de Control de Gestión / Finanzas · Santiago (prioridad La Reina y comunas cercanas). Registra aquí cada oferta que encuentres y su estado, para no perder el hilo de tus postulaciones.</p>
   </div>
 </header>
@@ -315,7 +332,9 @@
     Este tablero guarda los datos <strong>en el navegador de este dispositivo</strong> (no hay servidor detrás).
     Usa “Exportar” de vez en cuando para respaldar tu información o pasarla a otro computador, e “Importar”
     para cargarla de nuevo. Las comunas de prioridad alta son: La Reina, Ñuñoa, Las Condes, Peñalolén, Macul,
-    Providencia y Vitacura.
+    Providencia y Vitacura.<br>
+    Las ofertas nuevas que se detecten a diario se suman automáticamente a esta lista (sin borrar tu progreso
+    en las que ya tienes registradas), y recibirás un correo con el resumen del día.
   </div>
 
 </div>
@@ -420,6 +439,37 @@
   }
 
   var jobs = loadJobs();
+
+  function syncFromSeed() {
+    fetch("data/ofertas.json", { cache: "no-store" })
+      .then(function (res) { return res.ok ? res.json() : []; })
+      .then(function (seed) {
+        if (!Array.isArray(seed) || seed.length === 0) return;
+        var existingIds = new Set(jobs.map(function (j) { return j.id; }));
+        var added = 0;
+        seed.forEach(function (s) {
+          if (s && s.id && !existingIds.has(s.id)) {
+            jobs.push({
+              id: s.id,
+              cargo: s.cargo || "",
+              empresa: s.empresa || "",
+              comuna: s.comuna || "",
+              fecha: s.fecha || "",
+              estado: "Nueva",
+              link: s.link || "",
+              notas: ""
+            });
+            added++;
+          }
+        });
+        if (added > 0) {
+          saveJobs(jobs);
+          renderAll();
+          showToast(added + " oferta" + (added === 1 ? "" : "s") + " nueva" + (added === 1 ? "" : "s") + " agregada" + (added === 1 ? "" : "s") + " automáticamente.");
+        }
+      })
+      .catch(function () { /* sin conexión o sin archivo de ofertas aún: se ignora */ });
+  }
 
   function renderStats() {
     var el = document.getElementById("stats");
@@ -585,6 +635,7 @@
   });
 
   renderAll();
+  syncFromSeed();
 })();
 </script>
 </body>
