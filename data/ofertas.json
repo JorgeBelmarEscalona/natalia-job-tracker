@@ -110,5 +110,325 @@
     "empresa": "ManpowerGroup Chile",
     "comuna": "Vitacura",
     "link": "https://www.laborum.cl/empleos/analista-comercial-y-control-de-gestion-vitacura-manpowergroup-chile-1118232116.html"
+  },
+  {
+    "id": "administrativo-contable-3903587",
+    "fecha": "2026-09-24",
+    "cargo": "Administrativo Contable",
+    "empresa": "NNN SPA",
+    "comuna": "La Reina",
+    "link": "https://www.chiletrabajos.cl/trabajo/administrativo-contable-3903587"
+  },
+  {
+    "id": "alumno-en-practica-administracion-y-rrhh-3903855",
+    "fecha": "2026-09-24",
+    "cargo": "Alumno en Práctica – Administración y RR.HH.",
+    "empresa": "Importante Empresa de Seguridad",
+    "comuna": "Providencia",
+    "link": "https://www.chiletrabajos.cl/trabajo/alumno-en-practica-administracion-y-rrhh-3903855"
+  },
+  {
+    "id": "analista-contable-3422976",
+    "fecha": "2026-09-25",
+    "cargo": "Analista Contable",
+    "empresa": "Empresa Privada",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-contable-3422976"
+  },
+  {
+    "id": "analista-contable-3885080",
+    "fecha": "2026-09-22",
+    "cargo": "ANALISTA CONTABLE",
+    "empresa": "Eco Smart SpA - colina (sector la montaña)",
+    "comuna": "Colina",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-contable-3885080"
+  },
+  {
+    "id": "analista-contable-semi-senior-take-a-break-3902761",
+    "fecha": "2026-09-23",
+    "cargo": "Analista Contable semi senior (Take a Break)",
+    "empresa": "Take a Break",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-contable-semi-senior-take-a-break-3902761"
+  },
+  {
+    "id": "analista-control-de-gestion-comercial-3901113",
+    "fecha": "2026-09-21",
+    "cargo": "ANALISTA CONTROL DE GESTION COMERCIAL",
+    "empresa": "Empresa Productiva Maipu",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-control-de-gestion-comercial-3901113"
+  },
+  {
+    "id": "analista-control-de-gestion-junior-experiencia-rubo-financiero-proyecto-stag-3900682",
+    "fecha": "2026-09-21",
+    "cargo": "Analista Control de Gestión Junior, experiencia rubo financiero. Proyecto - Stag",
+    "empresa": "HR BURO",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-control-de-gestion-junior-experiencia-rubo-financiero-proyecto-stag-3900682"
+  },
+  {
+    "id": "analista-de-contabilidad-y-control-de-gestion-3903555",
+    "fecha": "2026-09-24",
+    "cargo": "Analista de Contabilidad y Control de Gestión",
+    "empresa": "SGMAQ SPA",
+    "comuna": "Las Condes",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-de-contabilidad-y-control-de-gestion-3903555"
+  },
+  {
+    "id": "analista-de-control-de-gestion-sector-alimentacion-3903013",
+    "fecha": "2026-09-23",
+    "cargo": "Analista de Control de Gestión – Sector Alimentación",
+    "empresa": "NN",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-de-control-de-gestion-sector-alimentacion-3903013"
+  },
+  {
+    "id": "analista-de-control-de-gestion-transporte-3900228",
+    "fecha": "2026-09-23",
+    "cargo": "Analista de Control de Gestión Transporte",
+    "empresa": "Salcobrand",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-de-control-de-gestion-transporte-3900228"
+  },
+  {
+    "id": "analista-de-costos-3902392",
+    "fecha": "2026-09-23",
+    "cargo": "Analista de Costos",
+    "empresa": "Plus Laboral",
+    "comuna": "San Bernardo",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-de-costos-3902392"
+  },
+  {
+    "id": "analista-de-facturacion-3884770",
+    "fecha": "2026-09-21",
+    "cargo": "Analista de Facturación",
+    "empresa": "BePeople",
+    "comuna": "La Reina",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-de-facturacion-3884770"
+  },
+  {
+    "id": "analista-de-finanzas-junior-de-cuentas-por-pagar-multinacional-aeronautica-3901794",
+    "fecha": "2026-09-22",
+    "cargo": "Analista de Finanzas Junior de Cuentas por Pagar - Multinacional Aeronáutica",
+    "empresa": "Confidencial",
+    "comuna": "Las Condes",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-de-finanzas-junior-de-cuentas-por-pagar-multinacional-aeronautica-3901794"
+  },
+  {
+    "id": "analista-riesgo-y-credito-las-condes-3903897",
+    "fecha": "2026-09-24",
+    "cargo": "Analista Riesgo y Credito - Las Condes",
+    "empresa": "XINERLINK",
+    "comuna": "Las Condes",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-riesgo-y-credito-las-condes-3903897"
+  },
+  {
+    "id": "asesor-en-prevencion-de-riesgos-3893011",
+    "fecha": "2026-09-23",
+    "cargo": "Asesor en prevención de Riesgos",
+    "empresa": "Confidencial",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/asesor-en-prevencion-de-riesgos-3893011"
+  },
+  {
+    "id": "asistente-administrativo-2305452",
+    "fecha": "2026-09-23",
+    "cargo": "Asistente administrativo",
+    "empresa": "8Layer chile spa",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/asistente-administrativo-2305452"
+  },
+  {
+    "id": "asistente-administrativo-a-de-facturacion-3623627",
+    "fecha": "2026-09-23",
+    "cargo": "Asistente Administrativo(a) de Facturación",
+    "empresa": "EHS APRYMA",
+    "comuna": "Las Condes",
+    "link": "https://www.chiletrabajos.cl/trabajo/asistente-administrativo-a-de-facturacion-3623627"
+  },
+  {
+    "id": "asistente-administrativo-facturacion-3902446",
+    "fecha": "2026-09-23",
+    "cargo": "ASISTENTE ADMINISTRATIVO FACTURACIÓN",
+    "empresa": "ACME SPA",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/asistente-administrativo-facturacion-3902446"
+  },
+  {
+    "id": "asistente-administrativo-facturas-3902447",
+    "fecha": "2026-09-23",
+    "cargo": "ASISTENTE ADMINISTRATIVO FACTURAS",
+    "empresa": "ACME SPA",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/asistente-administrativo-facturas-3902447"
+  },
+  {
+    "id": "asistente-contable-3493390",
+    "fecha": "2026-09-24",
+    "cargo": "Asistente Contable",
+    "empresa": "Tecnicall Ltda",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/asistente-contable-3493390"
+  },
+  {
+    "id": "asistente-contable-y-de-personas-3903326",
+    "fecha": "2026-09-24",
+    "cargo": "Asistente Contable y de Personas",
+    "empresa": "HEALTHCARE SPA",
+    "comuna": "Las Condes",
+    "link": "https://www.chiletrabajos.cl/trabajo/asistente-contable-y-de-personas-3903326"
+  },
+  {
+    "id": "asistente-de-contabilidad-3904181",
+    "fecha": "2026-09-25",
+    "cargo": "Asistente de Contabilidad",
+    "empresa": "Confidencial",
+    "comuna": "Las Condes",
+    "link": "https://www.chiletrabajos.cl/trabajo/asistente-de-contabilidad-3904181"
+  },
+  {
+    "id": "asistente-de-facturacion-y-cobranza-3901959",
+    "fecha": "2026-09-22",
+    "cargo": "Asistente de Facturación y Cobranza",
+    "empresa": "Gestión Global",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/asistente-de-facturacion-y-cobranza-3901959"
+  },
+  {
+    "id": "asistente-de-gerencia-de-finanzas-lo-barnechea-3904542",
+    "fecha": "2026-09-25",
+    "cargo": "Asistente de Gerencia de Finanzas - Lo Barnechea",
+    "empresa": "Esencial Staff",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/asistente-de-gerencia-de-finanzas-lo-barnechea-3904542"
+  },
+  {
+    "id": "asistente-de-tesoreria-3904386",
+    "fecha": "2026-09-25",
+    "cargo": "Asistente de Tesorería",
+    "empresa": "Verbum Consultores",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/asistente-de-tesoreria-3904386"
+  },
+  {
+    "id": "asistente-de-tesoreria-talagante-3902719",
+    "fecha": "2026-09-23",
+    "cargo": "Asistente de Tesorería - Talagante",
+    "empresa": "Confidencial",
+    "comuna": "Talagante",
+    "link": "https://www.chiletrabajos.cl/trabajo/asistente-de-tesoreria-talagante-3902719"
+  },
+  {
+    "id": "ayudante-de-cobranzas-area-de-finanzas-3902711",
+    "fecha": "2026-09-23",
+    "cargo": "Ayudante de Cobranzas – Área de Finanzas",
+    "empresa": "Confidencial",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/ayudante-de-cobranzas-area-de-finanzas-3902711"
+  },
+  {
+    "id": "contador-a-area-de-finanzas-3902819",
+    "fecha": "2026-09-23",
+    "cargo": "Contador/a – Área de Finanzas",
+    "empresa": "Confidencial",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/contador-a-area-de-finanzas-3902819"
+  },
+  {
+    "id": "contador-auditor-empresa-de-transportes-3705459",
+    "fecha": "2026-09-24",
+    "cargo": "Contador Auditor – Empresa de Transportes",
+    "empresa": "Eleva Talentos",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/contador-auditor-empresa-de-transportes-3705459"
+  },
+  {
+    "id": "contador-contador-auditor-3900976",
+    "fecha": "2026-09-23",
+    "cargo": "Contador / Contador Auditor",
+    "empresa": "Confidencial",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/contador-contador-auditor-3900976"
+  },
+  {
+    "id": "contador-junior-3904452",
+    "fecha": "2026-09-25",
+    "cargo": "CONTADOR JUNIOR",
+    "empresa": "STANFORD ELECTRIC",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/contador-junior-3904452"
+  },
+  {
+    "id": "control-de-gestion-comercial-3851288",
+    "fecha": "2026-09-23",
+    "cargo": "control de gestion comercial",
+    "empresa": "77256507-0",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/control-de-gestion-comercial-3851288"
+  },
+  {
+    "id": "especialista-en-administracion-y-compras-colina-3904093",
+    "fecha": "2026-09-25",
+    "cargo": "Especialista en Administración y Compras Colina",
+    "empresa": "Empresa Zona Norte",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/especialista-en-administracion-y-compras-colina-3904093"
+  },
+  {
+    "id": "gerente-de-administracion-y-finanzas-3901146",
+    "fecha": "2026-09-21",
+    "cargo": "Gerente de Administración y Finanzas",
+    "empresa": "Cherit Consultores",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/gerente-de-administracion-y-finanzas-3901146"
+  },
+  {
+    "id": "jefe-a-de-administracion-y-finanzas-startups-chilena-3901100",
+    "fecha": "2026-09-21",
+    "cargo": "Jefe/a de Administración y Finanzas startups Chilena",
+    "empresa": "Consultores de RRHH",
+    "comuna": "Providencia",
+    "link": "https://www.chiletrabajos.cl/trabajo/jefe-a-de-administracion-y-finanzas-startups-chilena-3901100"
+  },
+  {
+    "id": "jefe-contable-3902080",
+    "fecha": "2026-09-22",
+    "cargo": "Jefe Contable",
+    "empresa": "GL events Chile",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/jefe-contable-3902080"
+  },
+  {
+    "id": "jefe-de-contabilidad-3904549",
+    "fecha": "2026-09-25",
+    "cargo": "Jefe de Contabilidad",
+    "empresa": "Santiago Centro",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/jefe-de-contabilidad-3904549"
+  },
+  {
+    "id": "practica-area-cobranzas-administracion-y-finanzas-3903327",
+    "fecha": "2026-09-24",
+    "cargo": "Práctica área Cobranzas - Administración y Finanzas",
+    "empresa": "Bon Voyage Logistics SpA",
+    "comuna": "Las Condes",
+    "link": "https://www.chiletrabajos.cl/trabajo/practica-area-cobranzas-administracion-y-finanzas-3903327"
+  },
+  {
+    "id": "responsable-del-area-contable-3902580",
+    "fecha": "2026-09-23",
+    "cargo": "Responsable del area contable",
+    "empresa": "Mr Joy",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/responsable-del-area-contable-3902580"
+  },
+  {
+    "id": "staff-precios-de-transferencia-tax-legal-copia-3902303",
+    "fecha": "2026-09-22",
+    "cargo": "Staff Precios de Transferencia - Tax & Legal - copia",
+    "empresa": "KPMG Chile",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/staff-precios-de-transferencia-tax-legal-copia-3902303"
   }
 ]

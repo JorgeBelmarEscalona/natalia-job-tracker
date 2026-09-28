@@ -25,6 +25,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Buscar ofertas nuevas
+        run: python3 scripts/buscar_ofertas.py
+
       - name: Enviar resumen
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
@@ -32,12 +35,12 @@ jobs:
           NATALIA_EMAIL: ${{ secrets.NATALIA_EMAIL }}
         run: python3 scripts/send_digest.py
 
-      - name: Guardar registro de ofertas notificadas
+      - name: Guardar ofertas nuevas y registro de notificaciones
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- data/.notified.json; then
-            git add data/.notified.json
-            git commit -m "chore: actualizar registro de notificaciones"
+          if ! git diff --quiet -- data/ofertas.json data/.notified.json; then
+            git add data/ofertas.json data/.notified.json
+            git commit -m "feat: agregar ofertas nuevas detectadas (control de gestión / finanzas, RM)"
             git push
           fi
