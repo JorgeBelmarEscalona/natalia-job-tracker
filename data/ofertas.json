@@ -854,5 +854,29 @@
     "empresa": "TRC Recruitme",
     "comuna": "Santiago",
     "link": "https://www.chiletrabajos.cl/trabajo/tesorero-zona-maria-pinto-3907804"
+  },
+  {
+    "id": "progestion-2026-10-03",
+    "fecha": "2026-10-03",
+    "cargo": "Analista de Automatización y Control de Gestión",
+    "empresa": "Progestion",
+    "comuna": "Ñuñoa",
+    "link": "https://cl.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-analista-de-automatizacion-y-control-de-gestion-en-santiago-nunoa-6C07264AB7371BB861373E686DCF3405"
+  },
+  {
+    "id": "redsalud-2026-10-03",
+    "fecha": "2026-10-03",
+    "cargo": "Analista Senior Control de Gestión",
+    "empresa": "RedSalud",
+    "comuna": "Providencia",
+    "link": "https://www.trabajando.cl/trabajo/5927808-analista-senior-control-de-gestion-redsalud-vitacura-providencia"
+  },
+  {
+    "id": "comercialportia-2026-10-03",
+    "fecha": "2026-10-03",
+    "cargo": "Analista de Control de Gestión",
+    "empresa": "Comercial Portia",
+    "comuna": "Las Condes",
+    "link": "https://cl.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-analista-de-control-de-gestion-en-santiago-las-condes-713D8636C0A3573C61373E686DCF3405"
   }
 ]
