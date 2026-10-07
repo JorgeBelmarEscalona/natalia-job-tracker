@@ -1038,5 +1038,45 @@
     "empresa": "oficina plus",
     "comuna": "Santiago",
     "link": "https://www.chiletrabajos.cl/trabajo/secretaria-contable-o-asistente-administrativo-part-time-3909767"
+  },
+  {
+    "id": "confidencial-gestion-financiera-comercial-2026-10-07",
+    "fecha": "2026-10-07",
+    "cargo": "Analista de Gestión Financiera Comercial",
+    "empresa": "Confidencial",
+    "comuna": "Providencia",
+    "link": "https://www.trabajando.cl/trabajo/6036217-analista-de-gestion-financiera-comercial"
+  },
+  {
+    "id": "reutter-2026-10-07",
+    "fecha": "2026-10-07",
+    "cargo": "Analista Contable y Control de Gestión",
+    "empresa": "Reutter",
+    "comuna": "Huechuraba",
+    "link": "https://www.trabajando.cl/trabajo/6049091-analista-contable-y-control-de-gestion"
+  },
+  {
+    "id": "ingevec-2026-10-07",
+    "fecha": "2026-10-07",
+    "cargo": "Analista Control de Gestión Inmobiliario",
+    "empresa": "Constructora Ingevec",
+    "comuna": "Las Condes",
+    "link": "https://www.trabajando.cl/trabajo/6058144-analista-control-de-gestion-inmobiliario"
+  },
+  {
+    "id": "pesco-2026-10-07",
+    "fecha": "2026-10-07",
+    "cargo": "Analista de Control de Gestión",
+    "empresa": "Pesco S.A.",
+    "comuna": "Quilicura",
+    "link": "https://www.trabajando.cl/trabajo/6111885-analista-de-control-de-gestion"
+  },
+  {
+    "id": "castano-2026-10-07",
+    "fecha": "2026-10-07",
+    "cargo": "Analista de Control Gestión y Revenue Management (Recién Titulado)",
+    "empresa": "Castaño",
+    "comuna": "Quilicura",
+    "link": "https://www.trabajando.cl/trabajo/6057247-analista-de-control-gestion-y-revenue-management-recien-titulado-quilicura"
   }
 ]
