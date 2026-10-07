@@ -1118,5 +1118,53 @@
     "empresa": "Raindoor",
     "comuna": "Santiago",
     "link": "https://www.chiletrabajos.cl/trabajo/practica-contabilidad-y-finanzas-3910155"
+  },
+  {
+    "id": "analista-contable-3910411",
+    "fecha": "2026-10-07",
+    "cargo": "Analista Contable",
+    "empresa": "Sites Chile S.A.",
+    "comuna": "Las Condes",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-contable-3910411"
+  },
+  {
+    "id": "analista-contable-3910684",
+    "fecha": "2026-10-07",
+    "cargo": "Analista Contable",
+    "empresa": "Empresa Comercial e Industrial",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-contable-3910684"
+  },
+  {
+    "id": "auditor-interno-3858968",
+    "fecha": "2026-10-07",
+    "cargo": "Auditor Interno",
+    "empresa": "Empresas VQ",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/auditor-interno-3858968"
+  },
+  {
+    "id": "ejecutivo-de-cobranza-3764857",
+    "fecha": "2026-10-07",
+    "cargo": "EJECUTIVO DE COBRANZA",
+    "empresa": "VPS Abogados",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/ejecutivo-de-cobranza-3764857"
+  },
+  {
+    "id": "jefe-de-contabilidad-3910729",
+    "fecha": "2026-10-07",
+    "cargo": "Jefe de Contabilidad",
+    "empresa": "CSC R&R",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/jefe-de-contabilidad-3910729"
+  },
+  {
+    "id": "practica-profesional-administracion-y-finanzas-3910428",
+    "fecha": "2026-10-07",
+    "cargo": "Práctica profesional Administración y Finanzas",
+    "empresa": "Grupo Los Lirios",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/practica-profesional-administracion-y-finanzas-3910428"
   }
 ]
