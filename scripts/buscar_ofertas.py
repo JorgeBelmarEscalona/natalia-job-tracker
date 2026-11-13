@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-"""Busca ofertas nuevas en chiletrabajos.cl y las agrega a data/ofertas.json.
+"""Mantiene data/ofertas.json solo con ofertas vigentes de chiletrabajos.cl.
 
-Filtra por: publicadas hace <= DIAS_MAX días, y que el cuerpo de la oferta
-mencione una comuna cercana a La Reina. No requiere login ni scraping de
+En cada corrida:
+1. Depura las ofertas ya guardadas: saca las publicadas hace más de DIAS_MAX
+   días, las que el sitio ya cerró y las que vienen de portales donde no se
+   puede comprobar la vigencia (ej. links de LinkedIn sacados de un buscador).
+2. Busca ofertas nuevas publicadas hace <= DIAS_MAX días y las agrega. No requiere login ni scraping de
 sitios que lo prohíben (revisar robots.txt); solo usa chiletrabajos.cl, que
 permite user-agents genéricos en estas rutas.
 """
@@ -14,6 +17,7 @@ import re
 import sys
 import time
 import unicodedata
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta
@@ -33,7 +37,35 @@ PALABRAS_CLAVE = [
 # fecha=6 -> "Hace un mes" (el filtro mas amplio del sitio); el recorte real
 # a DIAS_MAX dias se hace despues con la fecha exacta de cada oferta.
 FECHA_PARAM = "6"
-DIAS_MAX = 10
+DIAS_MAX = 7
+
+# Cargos que no calzan con el perfil (analista junior a semi-senior).
+CARGOS_EXCLUIDOS = [
+    "practica",
+    "practicante",
+    "pasantia",
+    "jefe",
+    "jefa",
+    "jefatura",
+    "gerente",
+    "subgerente",
+    "director",
+    "head of",
+]
+
+# Frases con las que el sitio marca un aviso que ya no recibe postulaciones.
+MARCAS_CERRADA = [
+    "oferta expirada",
+    "oferta caducada",
+    "oferta finalizada",
+    "aviso expirado",
+    "aviso caducado",
+    "aviso finalizado",
+    "ya no esta disponible",
+    "ya no se encuentra disponible",
+    "no esta disponible",
+    "proceso cerrado",
+]
 
 CARGOS_RELEVANTES = [
     "control de gestion",
@@ -69,9 +101,65 @@ def normalizar(texto: str) -> str:
 
 
 def get(url: str) -> str:
+    return get_con_url(url)[0]
+
+
+def get_con_url(url: str) -> tuple[str, str]:
+    """Devuelve (html, url_final) para detectar redirecciones."""
     req = urllib.request.Request(url, headers=HEADERS)
     with urllib.request.urlopen(req, timeout=20) as resp:
-        return resp.read().decode("utf-8", errors="replace")
+        return resp.read().decode("utf-8", errors="replace"), resp.geturl()
+
+
+def fecha_ok(fecha: str) -> bool:
+    try:
+        dt = datetime.strptime(fecha[:10], "%Y-%m-%d")
+    except (ValueError, TypeError):
+        return False
+    return dt >= datetime.now() - timedelta(days=DIAS_MAX)
+
+
+def motivo_baja(oferta: dict) -> str | None:
+    """Devuelve por qué una oferta guardada debe salir del tablero, o None si sigue vigente.
+
+    Ante un error de red pasajero se conserva la oferta: se vuelve a revisar
+    en la corrida siguiente.
+    """
+    link = oferta.get("link") or ""
+    if not link.startswith(BASE + "/trabajo/"):
+        return "portal sin verificación de vigencia"
+    if not fecha_ok(oferta.get("fecha", "")):
+        return f"publicada hace más de {DIAS_MAX} días"
+    try:
+        pagina, url_final = get_con_url(link)
+    except urllib.error.HTTPError as e:
+        if e.code in (404, 410):
+            return f"el aviso ya no existe (HTTP {e.code})"
+        print(f"  ? no se pudo revisar {link}: HTTP {e.code}", file=sys.stderr)
+        return None
+    except Exception as e:
+        print(f"  ? no se pudo revisar {link}: {e}", file=sys.stderr)
+        return None
+
+    if "/trabajo/" not in url_final:
+        return "el aviso redirige fuera de la oferta"
+    jp = extraer_jobposting(pagina)
+    if not jp:
+        return "el aviso ya no publica la oferta"
+    vence = str(jp.get("validThrough") or "")[:10]
+    if vence:
+        try:
+            if datetime.strptime(vence, "%Y-%m-%d").date() < datetime.now().date():
+                return f"venció el {vence}"
+        except ValueError:
+            pass
+    texto = normalizar(re.sub(r"<[^>]+>", " ", pagina))
+    for marca in MARCAS_CERRADA:
+        if marca in texto:
+            return f"el sitio la marca como cerrada ('{marca}')"
+    if not fecha_ok(str(jp.get("datePosted") or "")):
+        return f"publicada hace más de {DIAS_MAX} días"
+    return None
 
 
 def buscar_links(palabra: str) -> set[str]:
@@ -131,6 +219,9 @@ def detalle_oferta(slug: str) -> dict | None:
     cargo_norm = normalizar(f"{cargo} {industria}")
     if not any(clave in cargo_norm for clave in CARGOS_RELEVANTES):
         return None  # el titulo no calza con el perfil buscado (control de gestion/finanzas)
+    palabras_cargo = f" {re.sub(r'[^a-z0-9]+', ' ', normalizar(cargo))} "
+    if any(f" {excl} " in palabras_cargo for excl in CARGOS_EXCLUIDOS):
+        return None  # practicas y jefaturas quedan fuera del perfil
 
     empresa = html.unescape((jp.get("hiringOrganization") or {}).get("name", "Empresa no especificada"))
 
@@ -162,7 +253,24 @@ def detalle_oferta(slug: str) -> dict | None:
 
 def main():
     DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
-    existentes = json.loads(DATA_PATH.read_text()) if DATA_PATH.exists() else []
+    guardadas = json.loads(DATA_PATH.read_text()) if DATA_PATH.exists() else []
+
+    print(f"Revisando vigencia de {len(guardadas)} ofertas guardadas")
+    existentes = []
+    bajas: dict[str, int] = {}
+    for oferta in guardadas:
+        motivo = motivo_baja(oferta)
+        if motivo is None:
+            existentes.append(oferta)
+            time.sleep(0.5)
+        else:
+            clave = re.sub(r"\(.*\)|\d{4}-\d{2}-\d{2}", "", motivo).strip()
+            bajas[clave] = bajas.get(clave, 0) + 1
+            print(f"  - {oferta.get('cargo')} ({oferta.get('fecha')}): {motivo}")
+    for clave, n in sorted(bajas.items()):
+        print(f"  = {n} fuera: {clave}")
+    print(f"  = {len(existentes)} siguen vigentes\n")
+
     ids_existentes = {o["id"] for o in existentes} | {o.get("link") for o in existentes}
 
     slugs_candidatos: set[str] = set()
@@ -184,12 +292,13 @@ def main():
             ids_existentes.add(oferta["id"])
             print(f"  + {oferta['cargo']} ({oferta['comuna']}, {oferta['fecha']})")
 
-    if nuevas_ofertas:
+    if nuevas_ofertas or len(existentes) != len(guardadas):
         todas = existentes + nuevas_ofertas
         DATA_PATH.write_text(json.dumps(todas, ensure_ascii=False, indent=2) + "\n")
-        print(f"\n{len(nuevas_ofertas)} ofertas nuevas agregadas a {DATA_PATH}")
-    else:
-        print("\nNo se encontraron ofertas nuevas que cumplan los filtros.")
+    print(
+        f"\n{len(nuevas_ofertas)} ofertas nuevas, {len(guardadas) - len(existentes)} dadas de baja, "
+        f"{len(existentes) + len(nuevas_ofertas)} vigentes en {DATA_PATH.name}"
+    )
 
 
 if __name__ == "__main__":
