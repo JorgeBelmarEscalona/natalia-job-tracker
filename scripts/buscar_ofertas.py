@@ -234,7 +234,7 @@ def detalle_oferta(slug: str) -> dict | None:
     # La comuna exacta rara vez aparece declarada; se busca en la descripción
     # real de ESTA oferta (nunca en el resto del HTML) y si no aparece se
     # deja la localidad genérica para que Natalia revise la dirección en el link.
-    texto_propio = normalizar(f"{localidad} {jp.get('description', '')}")
+    texto_propio = normalizar(f"{cargo} {localidad} {jp.get('description', '')}")
     comuna = html.unescape(localidad) if localidad else "Santiago (RM)"
     for clave, nombre in COMUNAS_CERCA.items():
         if clave in texto_propio:
