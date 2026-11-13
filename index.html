@@ -309,7 +309,7 @@
       <table id="table">
         <thead>
           <tr>
-            <th>Fecha</th>
+            <th>Publicada</th>
             <th>Cargo</th>
             <th>Empresa</th>
             <th>Comuna / Modalidad</th>
@@ -329,12 +329,19 @@
   </div>
 
   <div class="panel footer-note">
+    <strong>Buscar también en LinkedIn (solo publicadas en la última semana):</strong>
+    <a class="link-btn" target="_blank" rel="noopener" href="https://www.linkedin.com/jobs/search/?keywords=analista%20control%20de%20gesti%C3%B3n&location=Santiago%2C%20Regi%C3%B3n%20Metropolitana%20de%20Santiago%2C%20Chile&f_TPR=r604800&sortBy=DD">Control de Gestión ↗</a>
+    <a class="link-btn" target="_blank" rel="noopener" href="https://www.linkedin.com/jobs/search/?keywords=analista%20financiero&location=Santiago%2C%20Regi%C3%B3n%20Metropolitana%20de%20Santiago%2C%20Chile&f_TPR=r604800&sortBy=DD">Analista Financiero ↗</a>
+  </div>
+
+  <div class="panel footer-note">
     Este tablero guarda los datos <strong>en el navegador de este dispositivo</strong> (no hay servidor detrás).
     Usa “Exportar” de vez en cuando para respaldar tu información o pasarla a otro computador, e “Importar”
     para cargarla de nuevo. Las comunas de prioridad alta son: La Reina, Ñuñoa, Las Condes, Peñalolén, Macul,
     Providencia y Vitacura.<br>
-    Las ofertas nuevas que se detecten a diario se suman automáticamente a esta lista (sin borrar tu progreso
-    en las que ya tienes registradas), y recibirás un correo con el resumen del día.
+    Cada día se revisan las ofertas: se suman las publicadas en la última semana que siguen abiertas, y las que
+    ya cerraron o tienen más de una semana se retiran solas si todavía estaban como “Nueva”. Las que ya marcaste
+    con otro estado (Postulada, En proceso, etc.) se conservan siempre. Recibirás un correo con el resumen del día.
   </div>
 
 </div>
@@ -445,6 +452,16 @@
       .then(function (res) { return res.ok ? res.json() : []; })
       .then(function (seed) {
         if (!Array.isArray(seed) || seed.length === 0) return;
+        // Las ofertas detectadas automáticamente que salieron de la lista vigente
+        // (cerradas o con más de una semana) se quitan solo si siguen como "Nueva".
+        // Las que Natalia ya movió de estado o agregó a mano no se tocan.
+        var seedIds = new Set(seed.map(function (s) { return s && s.id; }));
+        var before = jobs.length;
+        jobs = jobs.filter(function (j) {
+          var manual = !j.id || j.id.indexOf("j_") === 0;
+          return manual || j.estado !== "Nueva" || seedIds.has(j.id);
+        });
+        var removed = before - jobs.length;
         var existingIds = new Set(jobs.map(function (j) { return j.id; }));
         var added = 0;
         seed.forEach(function (s) {
@@ -462,10 +479,13 @@
             added++;
           }
         });
-        if (added > 0) {
+        if (added > 0 || removed > 0) {
           saveJobs(jobs);
           renderAll();
-          showToast(added + " oferta" + (added === 1 ? "" : "s") + " nueva" + (added === 1 ? "" : "s") + " agregada" + (added === 1 ? "" : "s") + " automáticamente.");
+          var partes = [];
+          if (added > 0) partes.push(added + " nueva" + (added === 1 ? "" : "s"));
+          if (removed > 0) partes.push(removed + " ya cerrada" + (removed === 1 ? "" : "s") + " retirada" + (removed === 1 ? "" : "s"));
+          showToast("Ofertas actualizadas: " + partes.join(", ") + ".");
         }
       })
       .catch(function () { /* sin conexión o sin archivo de ofertas aún: se ignora */ });
@@ -541,7 +561,7 @@
 
       return (
         '<tr>' +
-        '<td data-label="Fecha"><input type="date" value="' + escapeHtml(j.fecha || "") + '" onchange="window.__jt.change(\'' + j.id + '\',\'fecha\',this.value)" /></td>' +
+        '<td data-label="Publicada"><input type="date" value="' + escapeHtml(j.fecha || "") + '" onchange="window.__jt.change(\'' + j.id + '\',\'fecha\',this.value)" /></td>' +
         '<td data-label="Cargo"><input type="text" value="' + escapeHtml(j.cargo || "") + '" onchange="window.__jt.change(\'' + j.id + '\',\'cargo\',this.value)" /></td>' +
         '<td data-label="Empresa"><input type="text" value="' + escapeHtml(j.empresa || "") + '" onchange="window.__jt.change(\'' + j.id + '\',\'empresa\',this.value)" /></td>' +
         '<td data-label="Comuna / Modalidad"><input type="text" value="' + escapeHtml(j.comuna || "") + '" onchange="window.__jt.change(\'' + j.id + '\',\'comuna\',this.value)" /></td>' +

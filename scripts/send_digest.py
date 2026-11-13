@@ -31,14 +31,14 @@ def save_json(path, data):
         f.write("\n")
 
 
-def build_html(nuevas, total, pendientes):
+def build_html(nuevas, total):
     if nuevas:
         rows = "".join(
             f"""
             <tr>
               <td style="padding:10px 12px;border-bottom:1px solid #E4E1F3;">
                 <div style="font-weight:600;color:#262433;font-size:14px;">{o['cargo']}</div>
-                <div style="color:#6B6880;font-size:12.5px;margin-top:2px;">{o['empresa']} · {o['comuna']}</div>
+                <div style="color:#6B6880;font-size:12.5px;margin-top:2px;">{o['empresa']} · {o['comuna']} · publicada {o['fecha']}</div>
               </td>
               <td style="padding:10px 12px;border-bottom:1px solid #E4E1F3;text-align:right;white-space:nowrap;">
                 <a href="{o['link']}" style="color:{ACCENT_DARK};font-weight:600;font-size:12.5px;text-decoration:none;">Ver oferta &#8599;</a>
@@ -54,7 +54,7 @@ def build_html(nuevas, total, pendientes):
     else:
         nuevas_block = """
         <p style="color:#6B6880;font-size:13.5px;margin-top:14px;">
-          Sin ofertas nuevas hoy. Sigue pendiente revisar las que ya tienes en el tablero.
+          Sin ofertas nuevas hoy.
         </p>"""
         headline = "Sin ofertas nuevas hoy"
 
@@ -66,7 +66,8 @@ def build_html(nuevas, total, pendientes):
   </div>
   <div style="background:#FFFFFF;border:1px solid #E4E1F3;border-top:none;border-radius:0 0 14px 14px;padding:20px 24px;">
     <p style="color:#262433;font-size:13.5px;line-height:1.6;margin:0;">
-      Tienes <strong>{total}</strong> ofertas registradas en total, <strong>{pendientes}</strong> pendientes por postular.
+      Hay <strong>{total}</strong> ofertas vigentes en el tablero: publicadas en la última semana y
+      revisadas hoy para confirmar que siguen abiertas.
     </p>
     {nuevas_block}
     <a href="{SITE_URL}" style="display:inline-block;margin-top:20px;background:{ACCENT_DARK};color:#fff;
@@ -91,9 +92,8 @@ def main():
 
     nuevas = [o for o in ofertas if o.get("id") not in notified_ids]
     total = len(ofertas)
-    pendientes = len(ofertas) - len(notified_ids & {o["id"] for o in ofertas})
 
-    html = build_html(nuevas, total, pendientes)
+    html = build_html(nuevas, total)
 
     msg = MIMEText(html, "html", "utf-8")
     msg["Subject"] = (

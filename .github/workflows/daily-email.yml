@@ -4,7 +4,12 @@ on:
   schedule:
     # 12:00 UTC ~ 08:00-09:00 hora de Santiago (ajustar si hace falta)
     - cron: "0 12 * * *"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Solo probar la búsqueda: no envía correo ni guarda cambios"
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths:
@@ -29,13 +34,24 @@ jobs:
         run: python3 scripts/buscar_ofertas.py
 
       - name: Enviar resumen
+        if: ${{ !inputs.dry_run }}
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           NATALIA_EMAIL: ${{ secrets.NATALIA_EMAIL }}
         run: python3 scripts/send_digest.py
 
+      - name: Mostrar resultado de la prueba
+        if: ${{ inputs.dry_run }}
+        run: |
+          python3 - <<'PY'
+          import json
+          for o in json.load(open("data/ofertas.json")):
+              print(o["fecha"], "|", o["cargo"], "|", o["empresa"], "|", o["comuna"], "|", o["link"])
+          PY
+
       - name: Guardar ofertas nuevas y registro de notificaciones
+        if: ${{ !inputs.dry_run }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

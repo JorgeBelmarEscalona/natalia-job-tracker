@@ -1,0 +1,28 @@
+name: Prueba de búsqueda (sin correo)
+
+# Corre en cualquier rama que no sea main: ejecuta la búsqueda y muestra el
+# resultado en el log, sin enviar correo ni guardar cambios.
+on:
+  push:
+    branches-ignore: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  probar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Buscar y depurar ofertas
+        run: python3 scripts/buscar_ofertas.py
+      - name: Ofertas que quedarían en el tablero
+        run: |
+          python3 - <<'PY'
+          import json
+          for o in json.load(open("data/ofertas.json")):
+              print(o["fecha"], "|", o["cargo"], "|", o["empresa"], "|", o["comuna"], "|", o["link"])
+          PY
