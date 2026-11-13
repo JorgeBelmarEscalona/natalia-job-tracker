@@ -11,10 +11,14 @@ Sitio publicado: https://jorgebelmarescalona.github.io/natalia-job-tracker/
 - Usa los botones **Exportar** / **Importar** para respaldar la información o pasarla a otro computador.
 - `data/ofertas.json` es la lista compartida de ofertas detectadas. **Se llena sola**: cada corrida del
   workflow ejecuta primero `scripts/buscar_ofertas.py`, que busca en chiletrabajos.cl avisos de
-  Control de Gestión / Finanzas / Contabilidad / Administración publicados en los últimos 10 días en la
+  Control de Gestión / Finanzas / Contabilidad / Administración publicados en los últimos 7 días en la
   Región Metropolitana, y los agrega automáticamente (sin login ni intervención manual).
+  En la misma corrida revisa las ofertas ya guardadas y retira las que cerraron, las que tienen más de
+  7 días y las de portales donde no se puede comprobar la vigencia (ej. links de LinkedIn), para que
+  todo lo que se muestra y se avisa por correo se pueda postular.
   Al abrir el sitio, cualquier oferta nueva de ese archivo que no esté ya en el tablero se agrega sola,
-  sin tocar el progreso de las que ya están.
+  y las que salieron del archivo se quitan solo si seguían en estado "Nueva" (el progreso de las demás
+  no se toca).
   - La comuna exacta rara vez viene declarada en el aviso (la mayoría solo dice "Santiago"), así que el
     filtro de ubicación no es estricto: se guarda la comuna cuando el aviso la menciona (ej. La Reina,
     Ñuñoa, Providencia, Las Condes) y si no, queda como "Santiago (RM)" para revisar la dirección en el
