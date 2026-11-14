@@ -1,21 +1,5 @@
 [
   {
-    "id": "asistente-contable-y-de-facturacion-3928136",
-    "fecha": "2026-11-07",
-    "cargo": "ASISTENTE CONTABLE Y DE FACTURACIÓN",
-    "empresa": "KHRONOS",
-    "comuna": "Santiago",
-    "link": "https://www.chiletrabajos.cl/trabajo/asistente-contable-y-de-facturacion-3928136"
-  },
-  {
-    "id": "business-partner-providencia-3928153",
-    "fecha": "2026-11-07",
-    "cargo": "Business Partner - Providencia",
-    "empresa": "HR Burô",
-    "comuna": "Providencia",
-    "link": "https://www.chiletrabajos.cl/trabajo/business-partner-providencia-3928153"
-  },
-  {
     "id": "analista-de-compras-y-gestion-de-proveedores-maipu-3929046",
     "fecha": "2026-11-09",
     "cargo": "Analista de Compras y Gestión de Proveedores – Maipú",
@@ -366,5 +350,21 @@
     "empresa": "Confidencial",
     "comuna": "Santiago",
     "link": "https://www.chiletrabajos.cl/trabajo/tesorero-a-corporativo-3932047"
+  },
+  {
+    "id": "administrador-de-gestion-administrativa-contable-y-de-rrhh-3932264",
+    "fecha": "2026-11-14",
+    "cargo": "Administrador de gestión administrativa, contable y de RRHH",
+    "empresa": "Roman SPA",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/administrador-de-gestion-administrativa-contable-y-de-rrhh-3932264"
+  },
+  {
+    "id": "analista-de-control-de-proyectos-costos-y-facturacion-3932231",
+    "fecha": "2026-11-13",
+    "cargo": "Analista de Control de Proyectos – Costos y Facturación",
+    "empresa": "Orbe Ambiental & Legal",
+    "comuna": "Las Condes",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-de-control-de-proyectos-costos-y-facturacion-3932231"
   }
 ]
