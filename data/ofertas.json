@@ -40,14 +40,6 @@
     "link": "https://www.chiletrabajos.cl/trabajo/contador-auditor-senior-especialista-en-contabilidad-y-finanzas-3928866"
   },
   {
-    "id": "encargado-de-tesoreria-3896387",
-    "fecha": "2026-11-08",
-    "cargo": "Encargado de Tesorería",
-    "empresa": "CONFIDENCIAL",
-    "comuna": "Santiago",
-    "link": "https://www.chiletrabajos.cl/trabajo/encargado-de-tesoreria-3896387"
-  },
-  {
     "id": "jefe-de-tesoreria-3928443",
     "fecha": "2026-11-09",
     "cargo": "Jefe de Tesorería",
@@ -280,14 +272,6 @@
     "link": "https://www.chiletrabajos.cl/trabajo/analista-de-contabilidad-y-finanzas-sap-excluyente-3931484"
   },
   {
-    "id": "analista-de-control-de-gestion-3909578",
-    "fecha": "2026-11-08",
-    "cargo": "Analista de Control de Gestión",
-    "empresa": "Fluitek",
-    "comuna": "Santiago",
-    "link": "https://www.chiletrabajos.cl/trabajo/analista-de-control-de-gestion-3909578"
-  },
-  {
     "id": "asistente-contable-y-de-rendiciones-3928086",
     "fecha": "2026-11-12",
     "cargo": "Asistente Contable y de Rendiciones",
@@ -352,19 +336,19 @@
     "link": "https://www.chiletrabajos.cl/trabajo/tesorero-a-corporativo-3932047"
   },
   {
-    "id": "administrador-de-gestion-administrativa-contable-y-de-rrhh-3932264",
-    "fecha": "2026-11-14",
-    "cargo": "Administrador de gestión administrativa, contable y de RRHH",
-    "empresa": "Roman SPA",
-    "comuna": "Santiago",
-    "link": "https://www.chiletrabajos.cl/trabajo/administrador-de-gestion-administrativa-contable-y-de-rrhh-3932264"
-  },
-  {
     "id": "analista-de-control-de-proyectos-costos-y-facturacion-3932231",
     "fecha": "2026-11-13",
     "cargo": "Analista de Control de Proyectos – Costos y Facturación",
     "empresa": "Orbe Ambiental & Legal",
     "comuna": "Las Condes",
     "link": "https://www.chiletrabajos.cl/trabajo/analista-de-control-de-proyectos-costos-y-facturacion-3932231"
+  },
+  {
+    "id": "administrador-de-gestion-administrativa-contable-y-de-rrhh-3932321",
+    "fecha": "2026-11-15",
+    "cargo": "Administrador de gestión administrativa, contable y de RRHH",
+    "empresa": "Roman SPA",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/administrador-de-gestion-administrativa-contable-y-de-rrhh-3932321"
   }
 ]
