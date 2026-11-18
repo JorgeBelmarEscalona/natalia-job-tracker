@@ -1,21 +1,5 @@
 [
   {
-    "id": "analista-contable-senior-auditoria-e-ifrs-dartel-electricidad-3930331",
-    "fecha": "2026-11-11",
-    "cargo": "Analista Contable Senior (Auditoría e IFRS) Dartel Electricidad",
-    "empresa": "Dartel Electricidad",
-    "comuna": "Santiago",
-    "link": "https://www.chiletrabajos.cl/trabajo/analista-contable-senior-auditoria-e-ifrs-dartel-electricidad-3930331"
-  },
-  {
-    "id": "analista-financiero-de-ingresos-3930323",
-    "fecha": "2026-11-11",
-    "cargo": "Analista Financiero de ingresos",
-    "empresa": "Dartel Electricidad",
-    "comuna": "Santiago",
-    "link": "https://www.chiletrabajos.cl/trabajo/analista-financiero-de-ingresos-3930323"
-  },
-  {
     "id": "20436-analista-de-control-de-gestion-santiago-3930893",
     "fecha": "2026-11-12",
     "cargo": "20.436 Analista de Control de Gestión - Santiago",
@@ -32,14 +16,6 @@
     "link": "https://www.chiletrabajos.cl/trabajo/analista-contable-operacional-3931088"
   },
   {
-    "id": "analista-control-de-gestion-santiago-3930685",
-    "fecha": "2026-11-11",
-    "cargo": "Analista Control de Gestión - Santiago",
-    "empresa": "Empresa Confidencial",
-    "comuna": "Santiago",
-    "link": "https://www.chiletrabajos.cl/trabajo/analista-control-de-gestion-santiago-3930685"
-  },
-  {
     "id": "practicante-administracion-contabilidad-3931223",
     "fecha": "2026-11-12",
     "cargo": "Practicante Administración / Contabilidad",
@@ -54,14 +30,6 @@
     "empresa": "Rubro Automotriz",
     "comuna": "Santiago",
     "link": "https://www.chiletrabajos.cl/trabajo/remplazo-asistente-de-administracion-ventas-vitacura-3930894"
-  },
-  {
-    "id": "administrativo-contable-y-financiero-3484749",
-    "fecha": "2026-11-11",
-    "cargo": "Administrativo Contable y Financiero",
-    "empresa": "Empresa de Tecnología y Seguridad",
-    "comuna": "Santiago",
-    "link": "https://www.chiletrabajos.cl/trabajo/administrativo-contable-y-financiero-3484749"
   },
   {
     "id": "analista-de-contabilidad-y-finanzas-sap-excluyente-3931484",
@@ -238,5 +206,61 @@
     "empresa": "Holding Golden Security",
     "comuna": "Santiago",
     "link": "https://www.chiletrabajos.cl/trabajo/se-requiere-encargado-de-control-y-gestion-administrativa-y-operativa-3912802"
+  },
+  {
+    "id": "administrativo-contable-y-financiero-3484749",
+    "fecha": "2026-11-16",
+    "cargo": "Administrativo Contable y Financiero",
+    "empresa": "Empresa de Tecnología y Seguridad",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/administrativo-contable-y-financiero-3484749"
+  },
+  {
+    "id": "analista-control-de-gestion-3934056",
+    "fecha": "2026-11-17",
+    "cargo": "Analista Control de Gestión",
+    "empresa": "Confidencial",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-control-de-gestion-3934056"
+  },
+  {
+    "id": "data-analyst-junior-providencia-3915771",
+    "fecha": "2026-11-18",
+    "cargo": "Data Analyst Junior – Providencia",
+    "empresa": "Support Consulting",
+    "comuna": "Providencia",
+    "link": "https://www.chiletrabajos.cl/trabajo/data-analyst-junior-providencia-3915771"
+  },
+  {
+    "id": "digitador-contable-3934514",
+    "fecha": "2026-11-18",
+    "cargo": "Digitador Contable",
+    "empresa": "Trinity Energy Group SpA",
+    "comuna": "Ñuñoa",
+    "link": "https://www.chiletrabajos.cl/trabajo/digitador-contable-3934514"
+  },
+  {
+    "id": "ejecutivo-a-de-cobranza-3909082",
+    "fecha": "2026-11-18",
+    "cargo": "EJECUTIVO/A DE COBRANZA",
+    "empresa": "Dell'Oro Abogados",
+    "comuna": "Las Condes",
+    "link": "https://www.chiletrabajos.cl/trabajo/ejecutivo-a-de-cobranza-3909082"
+  },
+  {
+    "id": "encargada-o-de-finanzas-y-control-de-gestion-3934231",
+    "fecha": "2026-11-18",
+    "cargo": "Encargada/o de Finanzas y Control de Gestión",
+    "empresa": "GradoClima",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/encargada-o-de-finanzas-y-control-de-gestion-3934231"
+  },
+  {
+    "id": "tesorero-a-3934547",
+    "fecha": "2026-11-18",
+    "cargo": "Tesorero/a",
+    "empresa": "Soteco",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/tesorero-a-3934547"
   }
 ]
