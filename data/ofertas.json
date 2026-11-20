@@ -1,53 +1,5 @@
 [
   {
-    "id": "asistente-ejecutiva-3931885",
-    "fecha": "2026-11-13",
-    "cargo": "Asistente Ejecutiva",
-    "empresa": "Organización sin fines de lucro",
-    "comuna": "Santiago",
-    "link": "https://www.chiletrabajos.cl/trabajo/asistente-ejecutiva-3931885"
-  },
-  {
-    "id": "auditor-senior-ingles-experiencia-industria-minera-para-las-condes-3890773",
-    "fecha": "2026-11-13",
-    "cargo": "AUDITOR SENIOR-INGLES EXPERIENCIA INDUSTRIA MINERA PARA LAS CONDES",
-    "empresa": "Empresa Minería",
-    "comuna": "Las Condes",
-    "link": "https://www.chiletrabajos.cl/trabajo/auditor-senior-ingles-experiencia-industria-minera-para-las-condes-3890773"
-  },
-  {
-    "id": "contador-a-auditor-senior-experiencia-industria-minera-con-ingles-las-condes-3892890",
-    "fecha": "2026-11-13",
-    "cargo": "CONTADOR(A) AUDITOR SENIOR-EXPERIENCIA INDUSTRIA MINERA CON INGLÉS LAS CONDES",
-    "empresa": "Empresa Minería",
-    "comuna": "Las Condes",
-    "link": "https://www.chiletrabajos.cl/trabajo/contador-a-auditor-senior-experiencia-industria-minera-con-ingles-las-condes-3892890"
-  },
-  {
-    "id": "contador-auditor-senior-con-ingles-para-las-condes-3926447",
-    "fecha": "2026-11-13",
-    "cargo": "CONTADOR AUDITOR SENIOR-CON INGLES PARA LAS CONDES",
-    "empresa": "Empresa Minería",
-    "comuna": "Las Condes",
-    "link": "https://www.chiletrabajos.cl/trabajo/contador-auditor-senior-con-ingles-para-las-condes-3926447"
-  },
-  {
-    "id": "tesorero-a-corporativo-3932047",
-    "fecha": "2026-11-13",
-    "cargo": "TESORERO/A CORPORATIVO",
-    "empresa": "Confidencial",
-    "comuna": "Santiago",
-    "link": "https://www.chiletrabajos.cl/trabajo/tesorero-a-corporativo-3932047"
-  },
-  {
-    "id": "analista-de-control-de-proyectos-costos-y-facturacion-3932231",
-    "fecha": "2026-11-13",
-    "cargo": "Analista de Control de Proyectos – Costos y Facturación",
-    "empresa": "Orbe Ambiental & Legal",
-    "comuna": "Las Condes",
-    "link": "https://www.chiletrabajos.cl/trabajo/analista-de-control-de-proyectos-costos-y-facturacion-3932231"
-  },
-  {
     "id": "analista-contable-3925597",
     "fecha": "2026-11-16",
     "cargo": "Analista Contable",
@@ -232,14 +184,6 @@
     "link": "https://www.chiletrabajos.cl/trabajo/encargado-a-de-administracion-y-gestion-de-personas-3934899"
   },
   {
-    "id": "encargado-de-gestion-administrativa-contable-y-de-rrhh-varon-el-postulante-3935381",
-    "fecha": "2026-11-19",
-    "cargo": "Encargado de gestión administrativa, contable y de RRHH ( varón )  El postulante",
-    "empresa": "Román Spa",
-    "comuna": "Santiago",
-    "link": "https://www.chiletrabajos.cl/trabajo/encargado-de-gestion-administrativa-contable-y-de-rrhh-varon-el-postulante-3935381"
-  },
-  {
     "id": "finance-controller-3935481",
     "fecha": "2026-11-19",
     "cargo": "Finance Controller",
@@ -254,5 +198,69 @@
     "empresa": "Mr Joy",
     "comuna": "Santiago",
     "link": "https://www.chiletrabajos.cl/trabajo/junior-contable-3881376"
+  },
+  {
+    "id": "analista-control-de-gestion-junior-3935966",
+    "fecha": "2026-11-20",
+    "cargo": "Analista Control de Gestión Junior",
+    "empresa": "Confidencial",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-control-de-gestion-junior-3935966"
+  },
+  {
+    "id": "analista-de-cobranza-serviu-3936206",
+    "fecha": "2026-11-20",
+    "cargo": "Analista de Cobranza Serviu",
+    "empresa": "Importante empresa constructora",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/analista-de-cobranza-serviu-3936206"
+  },
+  {
+    "id": "asistente-administrativo-contable-3935608",
+    "fecha": "2026-11-19",
+    "cargo": "ASISTENTE ADMINISTRATIVO CONTABLE",
+    "empresa": "PERNOS KIM",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/asistente-administrativo-contable-3935608"
+  },
+  {
+    "id": "asistente-ejecutiva-3931885",
+    "fecha": "2026-11-16",
+    "cargo": "Asistente Ejecutiva",
+    "empresa": "Organización sin fines de lucro",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/asistente-ejecutiva-3931885"
+  },
+  {
+    "id": "auditor-senior-ingles-experiencia-industria-minera-para-las-condes-3890773",
+    "fecha": "2026-11-18",
+    "cargo": "AUDITOR SENIOR-INGLES EXPERIENCIA INDUSTRIA MINERA PARA LAS CONDES",
+    "empresa": "Empresa Minería",
+    "comuna": "Las Condes",
+    "link": "https://www.chiletrabajos.cl/trabajo/auditor-senior-ingles-experiencia-industria-minera-para-las-condes-3890773"
+  },
+  {
+    "id": "contador-a-auditor-senior-experiencia-industria-minera-con-ingles-las-condes-3892890",
+    "fecha": "2026-11-18",
+    "cargo": "CONTADOR(A) AUDITOR SENIOR-EXPERIENCIA INDUSTRIA MINERA CON INGLÉS LAS CONDES",
+    "empresa": "Empresa Minería",
+    "comuna": "Las Condes",
+    "link": "https://www.chiletrabajos.cl/trabajo/contador-a-auditor-senior-experiencia-industria-minera-con-ingles-las-condes-3892890"
+  },
+  {
+    "id": "contador-auditor-senior-con-ingles-para-las-condes-3926447",
+    "fecha": "2026-11-18",
+    "cargo": "CONTADOR AUDITOR SENIOR-CON INGLES PARA LAS CONDES",
+    "empresa": "Empresa Minería",
+    "comuna": "Las Condes",
+    "link": "https://www.chiletrabajos.cl/trabajo/contador-auditor-senior-con-ingles-para-las-condes-3926447"
+  },
+  {
+    "id": "encargado-a-de-control-de-gestion-3936211",
+    "fecha": "2026-11-20",
+    "cargo": "Encargado/a de Control de Gestión",
+    "empresa": "Importante empresa constructora",
+    "comuna": "Santiago",
+    "link": "https://www.chiletrabajos.cl/trabajo/encargado-a-de-control-de-gestion-3936211"
   }
 ]
